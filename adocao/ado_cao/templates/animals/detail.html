@@ -12,6 +12,13 @@
 
     {% if current_user.is_authenticated and current_user.has_role('admin') %}
       <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('animals.edit', animal_id=animal.id) }}">Editar</a>
+
+    <form method="post" action="{{ url_for('animals.delete', animal_id=animal.id) }}" 
+      style="display:inline" 
+      onsubmit="return confirm('Tem certeza que deseja excluir este animal?')">
+    <button class="btn btn-outline-danger btn-sm">Excluir</button>
+    </form>
+
     {% endif %}
 
     {% if not animal.is_adopted %}
