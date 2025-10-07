@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="alert alert-success">
+  Sua solicitação de adoção para <strong>{{ animal.name }}</strong> foi enviada! Em breve um voluntário entrará em contato.
+</div>
+<a class="btn btn-outline-primary" href="{{ url_for('animals.list_animals') }}">Voltar para a lista</a>
+{% endblock %}

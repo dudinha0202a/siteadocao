@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h4">Campanhas</h1>
+<form method="post" class="row g-2 mb-3">
+  <div class="col-md-6"><input class="form-control" name="title" placeholder="Título" required></div>
+  <div class="col-md-6"><input class="form-control" name="link" placeholder="Link (opcional)"></div>
+  <div class="col-md-12"><textarea class="form-control" name="description" placeholder="Descrição"></textarea></div>
+  <div class="col-md-3"><input type="date" class="form-control" name="start_date" placeholder="Início"></div>
+  <div class="col-md-3"><input type="date" class="form-control" name="end_date" placeholder="Fim"></div>
+  <div class="col-md-2"><button class="btn btn-primary w-100">Salvar</button></div>
+</form>
+<ul class="list-group">
+  {% for c in items %}
+    <li class="list-group-item">
+      <strong>{{ c.title }}</strong> — {{ c.start_date }} a {{ c.end_date }}<br>
+      <span class="small">{{ c.description }}</span>
+      {% if c.link %}<div><a href="{{ c.link }}" target="_blank">Acessar</a></div>{% endif %}
+    </li>
+  {% else %}
+    <li class="list-group-item">Nenhuma campanha cadastrada.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
