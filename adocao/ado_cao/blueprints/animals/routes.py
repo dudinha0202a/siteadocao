@@ -59,6 +59,18 @@ def edit(animal_id):
         return redirect(url_for("animals.detail", animal_id=animal.id))
     return render_template("animals/form.html", mode="edit", animal=animal)
 
+@bp.route("/<int:animal_id>/delete", methods=["POST"])
+@login_required
+def delete(animal_id):
+    from ...utils import admin_required
+    admin_required()
+
+    animal = Animal.query.get_or_404(animal_id)
+    db.session.delete(animal)
+    db.session.commit()
+    flash("Animal excluído com sucesso!", "success")
+    return redirect(url_for("animals.list_animals"))
+
 @bp.route("/<int:animal_id>/adopt", methods=["POST"])
 def adopt_request(animal_id):
     animal = Animal.query.get_or_404(animal_id)
