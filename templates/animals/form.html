@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h4">{{ 'Novo animal' if mode=='new' else 'Editar animal' }}</h1>
+<form method="post" class="row g-2">
+  <div class="col-md-6"><input required class="form-control" name="name" placeholder="Nome" value="{{ animal.name if animal else '' }}"></div>
+  <div class="col-md-3"><input required class="form-control" name="species" placeholder="Espécie (cão/gato...)" value="{{ animal.species if animal else '' }}"></div>
+  <div class="col-md-3"><input class="form-control" name="breed" placeholder="Raça" value="{{ animal.breed if animal else '' }}"></div>
+  <div class="col-md-3"><input class="form-control" name="age" placeholder="Idade" value="{{ animal.age if animal else '' }}"></div>
+  <div class="col-md-3"><input class="form-control" name="sex" placeholder="Sexo" value="{{ animal.sex if animal else '' }}"></div>
+  <div class="col-md-3"><input class="form-control" name="size" placeholder="Porte" value="{{ animal.size if animal else '' }}"></div>
+  <div class="col-md-2"><input class="form-control" name="city" placeholder="Cidade" value="{{ animal.city if animal else '' }}"></div>
+  <div class="col-md-1"><input class="form-control" name="state" placeholder="UF" maxlength="2" value="{{ animal.state if animal else '' }}"></div>
+  <div class="col-12"><input class="form-control" name="photo_url" placeholder="URL da foto" value="{{ animal.photo_url if animal else '' }}"></div>
+  <div class="col-12"><textarea class="form-control" name="description" placeholder="Descrição">{{ animal.description if animal else '' }}</textarea></div>
+  {% if mode=='edit' %}
+  <div class="col-12 form-check">
+    <input class="form-check-input" type="checkbox" id="adopted" name="is_adopted" {% if animal.is_adopted %}checked{% endif %}>
+    <label class="form-check-label" for="adopted">Marcar como adotado</label>
+  </div>
+  {% endif %}
+  <div class="col-12"><button class="btn btn-primary">Salvar</button></div>
+</form>
+{% endblock %}
