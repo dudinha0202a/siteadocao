@@ -1,6 +1,6 @@
 from ado_cao import create_app
 from ado_cao.extensions import db
-from ado_cao.models import User, Role, Animal, Campaign, Event
+from ado_cao.models import User, Role, Animal
 from datetime import date
 
 app = create_app()
@@ -28,12 +28,6 @@ with app.app_context():
                 description="Calma, gosta de carinho, vermifugada.",
                 photo_url="https://images.unsplash.com/photo-1596854371257-0f14d8d7a6fe?q=80&w=1200&auto=format&fit=crop")
     db.session.add_all([a1, a2])
-
-    c1 = Campaign(title="Mutirão de castração", description="Campanha com vagas limitadas", link="", start_date=date.today(), end_date=date.today())
-    db.session.add(c1)
-
-    e1 = Event(title="Feira de Adoção", description="Parque central, tragam 1kg de ração", location="Ariquemes/RO", date=date.today())
-    db.session.add(e1)
 
     db.session.commit()
     print("✅ Seed concluído. Admin: admin@adocao.org / senha: admin123")

@@ -10,8 +10,6 @@
     <div id="nav" class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link" href="{{ url_for('animals.list_animals') }}">Animais</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.events') }}">Eventos</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.campaigns') }}">Campanhas</a></li>
       </ul>
       <ul class="navbar-nav">
         {% if current_user.is_authenticated %}

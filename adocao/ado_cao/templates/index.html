@@ -31,34 +31,4 @@
   <p>Nenhum animal cadastrado ainda.</p>
   {% endfor %}
 </div>
-
-<div class="row">
-  <div class="col-md-6">
-    <h2 class="h5">Campanhas</h2>
-    <ul class="list-group">
-      {% for c in campaigns %}
-        <li class="list-group-item">
-          <strong>{{ c.title }}</strong>
-          <div class="small">{{ c.description }}</div>
-          {% if c.link %}<a href="{{ c.link }}" target="_blank">Saiba mais</a>{% endif %}
-        </li>
-      {% else %}
-        <li class="list-group-item">Nenhuma campanha no momento.</li>
-      {% endfor %}
-    </ul>
-  </div>
-  <div class="col-md-6">
-    <h2 class="h5">Próximos eventos</h2>
-    <ul class="list-group">
-      {% for e in events %}
-        <li class="list-group-item">
-          <strong>{{ e.title }}</strong> — {{ e.date }}<br>
-          <span class="small">{{ e.location }}</span>
-        </li>
-      {% else %}
-        <li class="list-group-item">Sem eventos cadastrados.</li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
 {% endblock %}
