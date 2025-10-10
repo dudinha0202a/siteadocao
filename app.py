@@ -1,10 +1,16 @@
 from flask import Flask, render_template, redirect, url_for, flash, request, abort
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from datetime import datetime
-from config import DevConfig
 from extensions import db, login_manager
 from models import User, Role, Animal, AdoptionRequest
 from utils import admin_required
+import os, sys
+
+class DevConfig:
+    DEBUG = True
+    SECRET_KEY = "dev-secret-adocao"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///instance/adocao.sqlite"
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 def create_app(config_class=DevConfig):
     app = Flask(__name__, instance_relative_config=True)
