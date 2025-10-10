@@ -64,22 +64,3 @@ class AdoptionRequest(db.Model):
     message = db.Column(db.Text)
     status = db.Column(db.String(30), default="Recebido")
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-class Campaign(db.Model):
-    __tablename__ = "campaigns"
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(180), nullable=False)
-    description = db.Column(db.Text)
-    link = db.Column(db.String(500))
-    start_date = db.Column(db.Date)
-    end_date = db.Column(db.Date)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-class Event(db.Model):
-    __tablename__ = "events"
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(180), nullable=False)
-    description = db.Column(db.Text)
-    location = db.Column(db.String(200))
-    date = db.Column(db.Date)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
